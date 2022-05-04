@@ -190,48 +190,133 @@ class UserController extends Controller
 
 
 
-    //Reset Password
-    function ResetPassword(Request $req){
+    // //Reset Password
+    // function ResetPassword(Request $req){
 
-           $validator = Validator::make($req->all(),[
-          'newPassword' => [
+    //        $validator = Validator::make($req->all(),[
+    //       'newPassword' => [
+    //         'required',
+    //         'string',
+    //         'min:10',             // must be at least 10 characters in length
+    //         'regex:/[a-z]/',      // must contain at least one lowercase letter
+    //         'regex:/[A-Z]/',      // must contain at least one uppercase letter
+    //         'regex:/[0-9]/',      // must contain at least one digit
+    //         'regex:/[@$!%*#?&]/', // must contain a special character
+    //     ],
+    //     ]);
+
+    //     if($validator->fails()){
+    //         return response([
+    //             'error' => true,
+    //             'message'=>$validator->errors(),
+                
+    //         ]);
+    //     }
+
+        
+
+    //     $user= User::where('email', $req->email)->first();
+         
+    //         if (!$user || $req->otp != $user->otp) {
+    //             return response([
+    //                 'errorMessage' => true,
+    //                 'message' => 'Your otp or mail do not match our records.'
+    //             ]);
+        
+    //         }
+
+    //         $user->password = Hash::make($req->newPassword);
+
+    //         $result  = $user ->save();
+    //        return response([
+    //         'errorMessage' => false,
+    //         'message' => 'Password Sucessfully Reset!'
+    //     ]);
+
+    //    }
+
+
+    
+    //otpcheck
+
+    function OTPcheckAdmin(Request $request)
+    {
+        $user= User::where('email', $request->email)->first();
+      //  $user1= User::where('otp', $request->otp);
+      
+
+        //Validator  
+        $validator = Validator::make($request->all(),[
+          
+            'otp' => [
             'required',
             'string',
-            'min:10',             // must be at least 10 characters in length
-            'regex:/[a-z]/',      // must contain at least one lowercase letter
-            'regex:/[A-Z]/',      // must contain at least one uppercase letter
-            'regex:/[0-9]/',      // must contain at least one digit
-            'regex:/[@$!%*#?&]/', // must contain a special character
-        ],
+           
+        ],   
         ]);
 
         if($validator->fails()){
             return response([
-                'error' => true,
-                'message'=>$validator->errors(),
-                
+                'error' =>true,
+                'message'=> $validator->errors()
             ]);
+            
         }
 
+      
+            
+        if (!$user || $request->otp != $user->otp ) {
+            return response([
+                'errorMessage' => true,
+                'message' => 'OTP not match.'
+            ]);
+            
+        }
+                
+
+                
+            
         
-
-        $user= User::where('email', $req->email)->first();
-         
-            if (!$user || $req->otp != $user->otp) {
-                return response([
-                    'errorMessage' => true,
-                    'message' => 'Your otp or mail do not match our records.'
-                ]);
+           
         
-            }
+            $response = [
+              
+               
+                'errorMessage' => false,
+                 'message' => 'OTP is correct'
+            ];
+        
+             return response($response, 201);
+            
+    
+        }
 
-            $user->password = Hash::make($req->newPassword);
+ //REset Password
+ function ResetPasswordAdmin(Request $request){
 
-            $result  = $user ->save();
-           return response([
-            'errorMessage' => false,
-            'message' => 'Password Sucessfully Reset!'
+    $user= User::where('email', $request->email)->first();
+
+
+      
+    if (!$user  ) {
+        return response([
+            'errorMessage' => true,
+            'message' => 'Email not found'
         ]);
-
-       }
+        
     }
+
+    $user->password = Hash::make($request->newPassword);
+    
+    $result = $user->save();
+
+    return response([
+        'errorMessage' => false,
+        'message' => 'changed Sucessfully'
+    ]);
+    
+
+}
+
+}
+

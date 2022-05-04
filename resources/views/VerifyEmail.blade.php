@@ -147,7 +147,7 @@
                             <p style="margin: 0;">
                                 <ul>
                                 <li>FirstName - {{ $FirstName }}</li>
-                                <
+                               
                                 <li>Email - {{ $Email }} </li>
                                 
                                 </ul>
@@ -162,7 +162,7 @@
                     </tr>
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Cheers,<br>POS System team.</p>
+                            <p style="margin: 0;">Cheers,<br>Mangakiku.</p>
                         </td>
                     </tr>
                 </table>
@@ -174,7 +174,7 @@
                     <tr>
                         <td bgcolor="#FFECD1" align="center" style="padding: 30px 30px 30px 30px; border-radius: 4px 4px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             <h2 style="font-size: 20px; font-weight: 400; color: #111111; margin: 0;">Need more help?</h2>
-                            <p style="margin: 0;"><a href="#" target="_blank" style="color: #FFA73B;">We&rsquo;re here to help you out</a></p>
+                            <p style="margin: 0;"><a href="#" target="_blank" style="color: #FFA73B;">We are here to help you out</a></p>
                         </td>
                     </tr>
                 </table>

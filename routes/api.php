@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::get("getbyId/{id}",[AuthorController::class,'getUserById']);
     Route::post("Register",[AuthorController::class,'UserRegister']);
     Route::post("Login",[AuthorController::class,'UserLogin']);
+    Route::post("checkotp",[AuthorController::class,'OTPcheck']);
+    Route::delete("delete/{id}",[AuthorController::class,'delete']);
+    Route::put("reset",[AuthorController::class,'ResetPassword']);
 
 
     
@@ -49,7 +52,14 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
 
 // Admin 
 Route::post("login",[UserController::class,'index']);
-Route::post("reset",[UserController::class,'ResetPassword']);
+Route::post("otpCheckAdmin",[UserController::class,'OTPcheckAdmin']);
+Route::put("resetAdmin",[UserController::class,'ResetPasswordAdmin']);
+
+
+
+
+
+// Route::post("reset",[UserController::class,'ResetPassword']);
 
 
 //Pathai Admin
