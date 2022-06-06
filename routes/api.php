@@ -6,6 +6,7 @@ use App\Http\Controllers\PointController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\LibraryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,6 +45,7 @@ Route::group(['middleware' => 'auth:sanctum'], function(){
     Route::post("checkotp",[AuthorController::class,'OTPcheck']);
     Route::delete("delete/{id}",[AuthorController::class,'delete']);
     Route::put("reset",[AuthorController::class,'ResetPassword']);
+    Route::post("addLibrary",[LibraryController::class,'addLibrary']);
 
 
     
